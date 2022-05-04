@@ -4,7 +4,7 @@ const NavBar = () => {
   return (
           <nav>
               <div>
-                  <img 
+                  <img className='navbar-img'
                   alt='pokiapi-log'
                   src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
                   />
