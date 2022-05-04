@@ -1,10 +1,14 @@
 
 import './App.css';
+import NavBar from './Components.js/Navbar';
 
 function App() {
   return (
+    <div>
+      <NavBar/>
     <div className="App">
-     <h4>search api!!!</h4>
+    
+    </div>
     </div>
   );
 }
