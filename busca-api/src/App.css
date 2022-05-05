@@ -5,6 +5,13 @@
 nav{
   height: 100px;
   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.navbar-img{
+ width: 160px;
+ 
 }
 .App {
   text-align: center;
