@@ -7,7 +7,7 @@ function App() {
     <div>
       <NavBar/>
     <div className="App">
-    
+     
     </div>
     </div>
   );
