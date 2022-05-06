@@ -1,8 +1,8 @@
 import React,{useEffect,useState} from 'react'
-import { GetPokemo } from './api';
+import { GetPokemo, GetPokemonData } from './api'
 import './App.css'
 import NavBar from './Components.js/Navbar'
-import  Pokedex  from './Components.js/Pokedex';
+import  Pokedex  from './Components.js/Pokedex'
 import Searchbar from './Components.js/Searchbar'
 
 
@@ -16,8 +16,14 @@ function App() {
   const fectchingPokec= async () => {
      try {
       setloading(true)
-      const result = await GetPokemo();
-      setpokemon(result)
+      const data = await GetPokemo();
+      const promises = data.results.map(async (pokemon) =>{
+        return  await GetPokemonData(pokemon.url)
+      })
+      
+      //rememeber promisse all always receive list of promises!!
+      const results =  Promise.all(promises)
+      setpokemon(results)
       setloading(false)
      } catch (error) {
        console.log('fetchpoke error', error)
