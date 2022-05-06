@@ -36,7 +36,7 @@ return (
     <div>
       <NavBar/>
       <Searchbar />
-      <Pokedex pokemons={pokemons} loading={loading} />
+      <Pokedex pokemons={pokemons.results} loading={loading} />
      
     </div>
   );
