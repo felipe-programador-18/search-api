@@ -7,7 +7,7 @@ const Pokemon = (props) => {
   }
   const heart =  "❤"
   return(
-  <div className='card-pokemon'>
+  <div className='pokemon-card'>
        <div className='pokemon-image-container'>
           <img alt={pokemon.name} src={pokemon.sprites.front_default} className='pokemon-img' />
        </div>
@@ -28,7 +28,7 @@ const Pokemon = (props) => {
                   })}
              </div>   
               
-              <button className='pokemon-heart-btn' onClick={onHeartClick}> {} </button>
+              <button className='pokemon-heart-btn' onClick={onHeartClick}> {heart} </button>
            </div>
        </div>
   </div>)
