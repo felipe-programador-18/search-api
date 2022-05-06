@@ -22,7 +22,7 @@ function App() {
       })
       
       //rememeber promisse all always receive list of promises!!
-      const results =  Promise.all(promises)
+      const results = await Promise.all(promises)
       setpokemon(results)
       setloading(false)
      } catch (error) {
@@ -39,7 +39,7 @@ return (
     <div>
       <NavBar/>
       <Searchbar />
-      <Pokedex pokemons={pokemons.results} loading={loading} />
+      <Pokedex pokemons={pokemons} loading={loading} />
      
     </div>
   );
