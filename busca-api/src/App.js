@@ -13,7 +13,6 @@ function App() {
   const [loading, setloading] = useState(false)
   const [pokemons, setpokemon] = useState([])
 
-
   const fectchingPokec= async () => {
      try {
       setloading(true)
@@ -23,9 +22,7 @@ function App() {
      } catch (error) {
        console.log('fetchpoke error', error)
      }  
-   
   }
-   
   useEffect(() => {
      console.log('carregou!!!')
      fectchingPokec()
