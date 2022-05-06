@@ -3,8 +3,8 @@ import Pokemon from './Pokemon';
 //here i create map to adding below the other and also verify loading with all code
 
 const Pokedex = (props) => {
-    const {pokemons, loading} = props ;
-    console.log('verify pokemon',pokemons)
+    const {pokemons, loading} = props;
+    console.log('pokemons here', pokemons)
     return( <div>
         <div className='pokedex-header'>
         <h1>Pokedex</h1>
@@ -15,7 +15,7 @@ const Pokedex = (props) => {
         ( <div className='pokedex-grid' >
           {pokemons && pokemons.map((pokemon, index) => {
               return(
-                <Pokemon/>
+                <Pokemon key={index} pokemon={pokemon} />
               );
           })}
         </div> )
