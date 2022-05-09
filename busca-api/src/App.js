@@ -14,11 +14,12 @@ function App() {
   const [page, setpage] = useState(0)
   const [totalPages, setTotalPage] = useState(0)
   const [pokemons, setpokemon] = useState([])
+  const itemToPages = 50
 
   const fectchingPokec= async () => {
      try {
       setloading(true)
-      const data = await GetPokemo();
+      const data = await GetPokemo(itemToPages, itemToPages * page);
       const promises = data.results.map(async (pokemon) =>{
         return  await GetPokemonData(pokemon.url)
       })
@@ -27,6 +28,8 @@ function App() {
       const results = await Promise.all(promises)
       setpokemon(results)
       setloading(false)
+      //i adding count because count api!!!
+      setTotalPage(Math.ceil(data.count / itemToPages))
      } catch (error) {
        console.log('fetchpoke error', error)
      }  
