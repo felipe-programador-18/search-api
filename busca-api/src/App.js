@@ -4,6 +4,7 @@ import './App.css'
 import NavBar from './Components.js/Navbar'
 import  Pokedex  from './Components.js/Pokedex'
 import Searchbar from './Components.js/Searchbar'
+import { FavoriteProvider } from './Contexts/Favorites'
 
 
 
@@ -14,6 +15,10 @@ function App() {
   const [page, setpage] = useState(0)
   const [totalPages, setTotalPage] = useState(0)
   const [pokemons, setpokemon] = useState([])
+  // this favorites it working context!!!
+  const [favorites, setfavorites] = useState([])
+  
+  //make count of page i want!!
   const itemToPages = 25
 
   const fectchingPokec= async () => {
@@ -38,8 +43,20 @@ function App() {
      fectchingPokec()
    }, [page])
 
+ const updateFavoritePokemons = (name) => {
+  //create variable to caught all data with spring operator!!! 
+  const updateFavorited = [...favorites]
+  const favoritesIndex = favorites.indexOf(name)
+  if(favoritesIndex >= 0){
+    updateFavorited.slice(favoritesIndex,1) 
+  }else{
+    updateFavorited.push(name)
+  }
+  setfavorites(updateFavorited)
+ }  
   
 return (
+  <FavoriteProvider value={{favoritePokemons: favorites, updatefavoritePokemons:updateFavoritePokemons}} >
     <div>
       <NavBar/>
       <Searchbar />
@@ -49,9 +66,9 @@ return (
        page ={page} 
        setpage ={setpage}
        totalPages={totalPages} />
-     
-    </div>
-  );
+     </div>
+  
+  </FavoriteProvider>);
 }
 
 export default App;
