@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import FavoriteContext from '../Contexts/Favorites'
 // this way i am get all pokemon picture making method props
 const Pokemon = (props) => {
+  const {favoritePokemons, updatefavoritePokemons} = useContext(FavoriteContext)
+  
   const {pokemon} = props
   const onHeartClick = () =>{
-     console.log('can favorite')
+     //here inside i am passed it updatefavoritepokemon
+     updatefavoritePokemons(pokemon.name)
   }
-  const heart =  "❤"
+  const heart = favoritePokemons.includes(pokemon.name) ? "💛" : "🖤"
   return(
   <div className='pokemon-card'>
        <div className='pokemon-image-container'>
