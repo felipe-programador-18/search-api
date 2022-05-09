@@ -11,6 +11,7 @@ const NavBar = () => {
                   src={Imglink}
                   />
               </div>
+              <div> ❤ </div>
           </nav>
     
   )
