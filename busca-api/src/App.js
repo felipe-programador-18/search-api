@@ -14,7 +14,7 @@ function App() {
   const [page, setpage] = useState(0)
   const [totalPages, setTotalPage] = useState(0)
   const [pokemons, setpokemon] = useState([])
-  const itemToPages = 50
+  const itemToPages = 25
 
   const fectchingPokec= async () => {
      try {
@@ -35,9 +35,8 @@ function App() {
      }  
   }
   useEffect(() => {
-     console.log('carregou!!!')
      fectchingPokec()
-   }, [])
+   }, [page])
 
   
 return (
@@ -48,6 +47,7 @@ return (
        pokemons={pokemons}
        loading={loading}
        page ={page} 
+       setpage ={setpage}
        totalPages={totalPages} />
      
     </div>
