@@ -11,6 +11,8 @@ import Searchbar from './Components.js/Searchbar'
 function App() {
   // one flag date and anoter pokemon!!
   const [loading, setloading] = useState(false)
+  const [page, setpage] = useState(0)
+  const [totalPages, setTotalPage] = useState(0)
   const [pokemons, setpokemon] = useState([])
 
   const fectchingPokec= async () => {
@@ -39,7 +41,11 @@ return (
     <div>
       <NavBar/>
       <Searchbar />
-      <Pokedex pokemons={pokemons} loading={loading} />
+      <Pokedex 
+       pokemons={pokemons}
+       loading={loading}
+       page ={page} 
+       totalPages={totalPages} />
      
     </div>
   );
