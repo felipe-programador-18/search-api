@@ -6,6 +6,7 @@ import  Pokedex  from './Components.js/Pokedex'
 import Searchbar from './Components.js/Searchbar'
 import { FavoriteProvider } from './Contexts/Favorites'
 
+const favoritesKey = 'favorites'
 
 
 
@@ -39,6 +40,17 @@ function App() {
        console.log('fetchpoke error', error)
      }  
   }
+
+  //create funtion to make local storage!!!
+  const loadingFavorites = () => {
+   const savePokemon= JSON.parse(window.localStorage.getItem(favoritesKey)) || []
+   setfavorites(savePokemon)
+  }
+  useEffect(() => {
+    loadingFavorites()
+   }, [])
+  
+
   useEffect(() => {
      fectchingPokec()
    }, [page])
@@ -48,13 +60,15 @@ function App() {
   const updateFavorited = [...favorites]
   const favoritesIndex = favorites.indexOf(name)
   if(favoritesIndex >= 0){
-    updateFavorited.slice(favoritesIndex,1) 
+    updateFavorited.splice(favoritesIndex,1) 
   }else{
     updateFavorited.push(name)
   }
+  window.localStorage.setItem(favoritesKey, JSON.stringify(updateFavorited))
   setfavorites(updateFavorited)
  }  
-  
+ 
+
 return (
   <FavoriteProvider value={{favoritePokemons: favorites, updatefavoritePokemons:updateFavoritePokemons}} >
     <div>
