@@ -5,16 +5,22 @@ import Pokemon from './Pokemon'
 
 //here i create map to adding below the other and also verify loading with all code
 const Pokedex = (props) => {
-    const {pokemons, loading, page, totalPages} = props;
+    const {pokemons, loading, page, setpage, totalPages} = props;
     //console.log('pokemons here', pokemons)
      
     // create two functions to paginations!!
-     const OnLeftClick = () => {
-        console.log('volta')
+     const OnLeftHandlingClick = () => {
+        if(page > 0){
+          //this verify to stay page!!
+          setpage(page -1)
+        }
       }
       
-      const OnRightClick = () => {
-        console.log('avanca')
+      const OnRightHandlingClick = () => {
+        if(page+1 !== totalPages){
+          //aqui se a pagina for diferente do numero total de pagina 46.. sempre passar a pagina 
+          setpage(page+1)
+        }
       }
       
     return( <div>
@@ -23,8 +29,8 @@ const Pokedex = (props) => {
          <Pagination 
          page ={page+1}
          totalPages={totalPages} 
-         onLeftClick={OnLeftClick}
-         OnRightClick={OnRightClick} />
+         OnLeftClick={OnLeftHandlingClick}
+         OnRightClick={OnRightHandlingClick} />
         </div>
         {loading ?  (<div>Carregando, fera aqui....</div>
         ) : 
