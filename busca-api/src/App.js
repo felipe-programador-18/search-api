@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import { GetPokemo, GetPokemonData } from './api'
+import { GetPokemo, GetPokemonData, searchPokemo } from './api'
 import './App.css'
 import NavBar from './Components.js/Navbar'
 import  Pokedex  from './Components.js/Pokedex'
@@ -13,7 +13,8 @@ const favoritesKey = 'favorites'
 function App() {
   // one flag date and anoter pokemon!!
   const [loading, setloading] = useState(false)
-  const [page, setpage] = useState(0)
+  const [notfound, setNotFound] = useState(false)
+  const [page, setPage] = useState(0)
   const [totalPages, setTotalPage] = useState(0)
   const [pokemons, setpokemon] = useState([])
   // this favorites it working context!!!
@@ -25,6 +26,7 @@ function App() {
   const fectchingPokec= async () => {
      try {
       setloading(true)
+      setNotFound(false)
       const data = await GetPokemo(itemToPages, itemToPages * page);
       const promises = data.results.map(async (pokemon) =>{
         return  await GetPokemonData(pokemon.url)
@@ -68,19 +70,40 @@ function App() {
   setfavorites(updateFavorited)
  }  
  
+ const onSearchHandling = async (pokemon) => {
+  //if don't have pokemon i do fectching pokemon
+  if(!pokemon){
+   return fectchingPokec()
+  }
+
+  setloading(true)
+  setNotFound(false)
+  const result = await  searchPokemo(pokemon)
+  if(!result){
+   setNotFound(true)
+  } else{
+    setpokemon([result])
+    setPage(0)
+    setTotalPage(1)
+
+  }
+  setloading(false)
+ }
 
 return (
   <FavoriteProvider value={{favoritePokemons: favorites, updatefavoritePokemons:updateFavoritePokemons}} >
     <div>
       <NavBar/>
-      <Searchbar />
-      <Pokedex 
+      <Searchbar onSearch={onSearchHandling} />
+      {notfound ? ( <div className='not-found'>Meteu essa meu ?</div>) :
+      (<Pokedex 
        pokemons={pokemons}
        loading={loading}
        page ={page} 
-       setpage ={setpage}
-       totalPages={totalPages} />
-     </div>
+       setPage ={setPage}
+       totalPages={totalPages} /> 
+       )}
+     </div> 
   
   </FavoriteProvider>);
 }
