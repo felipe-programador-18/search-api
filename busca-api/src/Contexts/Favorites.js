@@ -5,7 +5,7 @@ import React from 'react'
 //here i am create two context to passed it and save favorites called favoritepoke, updating pokemon
 const FavoriteContext = React.createContext({
     favoritePokemons: [],
-    updatefavoritePokemons : (id) =>null
+    updatefavoritePokemons : (id) => null
 })
 export const FavoriteProvider = FavoriteContext.Provider
 export default FavoriteContext
