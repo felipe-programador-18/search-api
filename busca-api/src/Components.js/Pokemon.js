@@ -3,8 +3,8 @@ import FavoriteContext from '../Contexts/Favorites'
 // this way i am get all pokemon picture making method props
 const Pokemon = (props) => {
   const {favoritePokemons, updatefavoritePokemons} = useContext(FavoriteContext)
-  
   const {pokemon} = props
+  
   const onHeartClick = () =>{
      //here inside i am passed it updatefavoritepokemon
      updatefavoritePokemons(pokemon.name)
