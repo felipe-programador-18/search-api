@@ -32,7 +32,7 @@ const Pokedex = (props) => {
          OnLeftClick={OnLeftHandlingClick}
          OnRightClick={OnRightHandlingClick} />
         </div>
-        {loading ?  (<div>Carregando, fera aqui....</div>
+        {loading ?  (<div>Carregando ....</div>
         ) : 
         ( <div className='pokedex-grid' >
           {pokemons && pokemons.map((pokemon, index) => {
@@ -40,8 +40,8 @@ const Pokedex = (props) => {
                 <Pokemon key={index} pokemon={pokemon} />
               );
           })}
-        </div> )
-        }
+        </div> 
+        )}
     </div>
     )
 }
