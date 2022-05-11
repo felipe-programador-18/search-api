@@ -28,8 +28,7 @@ const Pokemon = (props) => {
               { return <div key={index}  className='pokemon-type-text' >
                    {type.type.name}
               </div>
-            
-                  })}
+               })}
              </div>   
               
               <button className='pokemon-heart-btn' onClick={onHeartClick}> {heart} </button>
