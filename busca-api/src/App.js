@@ -75,7 +75,6 @@ function App() {
   if(!pokemon){
    return fectchingPokec()
   }
-
   setloading(true)
   setNotFound(false)
   const result = await  searchPokemo(pokemon)
