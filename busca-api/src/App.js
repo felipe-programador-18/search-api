@@ -28,6 +28,8 @@ function App() {
       setloading(true)
       setNotFound(false)
       const data = await GetPokemo(itemToPages, itemToPages * page);
+      //testing data to see what have inside data
+      console.log(data)
       const promises = data.results.map(async (pokemon) =>{
         return  await GetPokemonData(pokemon.url)
       })
@@ -38,6 +40,7 @@ function App() {
       setloading(false)
       //i adding count because count api!!!
       setTotalPage(Math.ceil(data.count / itemToPages))
+
      } catch (error) {
        console.log('fetchpoke error', error)
      }  
