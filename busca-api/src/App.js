@@ -40,7 +40,7 @@ function App() {
       setloading(false)
       //i adding count because count api!!!
       setTotalPage(Math.ceil(data.count / itemToPages))
-
+      console.log('testing',results)
      } catch (error) {
        console.log('fetchpoke error', error)
      }  
