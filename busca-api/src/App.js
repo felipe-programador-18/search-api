@@ -29,7 +29,7 @@ function App() {
       setNotFound(false)
       const data = await GetPokemo(itemToPages, itemToPages * page);
       //testing data to see what have inside data
-      console.log(data)
+      console.log('api here',data)
       const promises = data.results.map(async (pokemon) =>{
         return  await GetPokemonData(pokemon.url)
       })
