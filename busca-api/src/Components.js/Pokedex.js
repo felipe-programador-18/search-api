@@ -24,14 +24,14 @@ const Pokedex = (props) => {
       }
       
     return( <div>
-        <div className='pokedex-header'>
+      <div className='pokedex-header'>
         <h1>Pokedex</h1>
          <Pagination 
          page ={page+1}
          totalPages={totalPages} 
          OnLeftClick={OnLeftHandlingClick}
          OnRightClick={OnRightHandlingClick} />
-        </div>
+     </div>
         {loading ?  (<div>Carregando ....</div>
         ) : 
         ( <div className='pokedex-grid' >
