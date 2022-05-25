@@ -16,7 +16,7 @@ const Pokemon = (props) => {
           <img alt={pokemon.name} src={pokemon.sprites.front_default} className='pokemon-img' />
        </div>
        
-       <div className='card-body'>
+      <div className='card-body'>
           <div className='card-top'>
               <h3> {pokemon.name}</h3>
               <div>#{pokemon.id}</div>
@@ -33,7 +33,7 @@ const Pokemon = (props) => {
               
               <button className='pokemon-heart-btn' onClick={onHeartClick}> {heart} </button>
            </div>
-       </div>
+      </div>
   </div>)
 }
 
